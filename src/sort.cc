@@ -146,6 +146,35 @@ void SelectSort(RecType R[], int n) {
     }
   }
 }
+void sift(RecType R[], int low, int high) {
+  int i = low;
+  int j = 2 * i;
+  RecType tmp = R[i];
+  while (j < high) {
+    if (j < high && R[j].key < R[j + 1].key) {
+      ++j;
+    }
+    if (tmp.key < R[j].key) {
+      R[i] = R[j];
+      i = j;
+      j = 2 * i;
+    } else {
+      break;
+    }
+  }
+  R[i] = tmp;
+}
+void HeapSort(RecType R[], int n) {
+  for (int i = n / 2; i >= 1; --i) {  // 循环建立初始堆, 调用n / 2次sift算法
+    sift(R, i, n);
+  }
+  for (int i = n; i >= 2;
+       --i) {  // 因为共有n个元素, 构建初始大顶堆时已经产生了一个排序好的元素,
+               // 对剩余的n-1个元素再重新构造堆
+    swap(R[1], R[i]);  // 将最后一个元素与R[1]交换, 因为堆顶元素是排好序的元素,
+    sift(R, 1, i - 1);  // 对[1..i-1]来重新构造堆, 得到i-1个结点的堆
+  }
+}
 void MergeSort(RecType R[], int low, int mid, int high) {
   RecType *R1;
   int i = low;
