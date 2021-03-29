@@ -27,4 +27,14 @@ LinkStrNode *SubString(LinkStrNode *, int, int);
 
 // 8.子串的插入
 LinkStrNode *InsertStr(LinkStrNode *, int, LinkStrNode *);
+
+// 9.子串的删除
+LinkStrNode *DelStr(LinkStrNode *, int, int);
+
+// 10.子串的替换
+LinkStrNode *Replace(LinkStrNode *, int, int, LinkStrNode *);
+
+// 11.输出串
+void DispStr(LinkStrNode *);
+
 #endif

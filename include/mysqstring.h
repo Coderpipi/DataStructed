@@ -40,4 +40,19 @@ void DispStr(SqString const &);
 
 // 12.比较字符串的大小(按照字典序比较)
 int StrCmp(SqString const &, SqString const &);
+
+// 串的匹配算法(Brute-Force)
+int BF(SqString, SqString);
+
+// 得到KMP算法中的next数组
+void GetNext(SqString, int[]);
+
+// 串的匹配算法(KMP算法)
+int KMPIndex(SqString, SqString);
+
+// 得到改进的KMP算法中的nextval数组
+void GetNextVal(SqString, int[]);
+
+// 改进的KMP算法
+int BetterKMP(SqString, SqString);
 #endif
