@@ -4,7 +4,7 @@ project(DATASTRUCTED)
 
 set(CMAKE_BUILD_TYPE Debug)
 
-set(CMAKE_CXX_COMPILER "g++")
+set(CMAKE_CXX_COMPILER "clang++")
 
 add_definitions("-std=c++11")
 
@@ -15,6 +15,5 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 link_directories(${PROJECT_SOURCE_DIR}/lib)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
-
 
 add_executable(main src/main.cc src/sort.cc)

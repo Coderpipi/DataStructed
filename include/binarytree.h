@@ -38,6 +38,6 @@ void PostOrderWithNoRecursion(BTNode *);
 void LevelOrder(BTNode *);
 // 15.根据先序遍历和中序遍历还原整个树
 BTNode *CreateBTreeByPreAndIn(char *, char *, int);
-// 15.根据后序遍历和中序遍历还原整个树
+// 16.根据后序遍历和中序遍历还原整个树
 BTNode *CreateBTreeByPostAndIn(char *, char *, int);
 #endif
