@@ -6,7 +6,7 @@
 |
 | DESCRIPTION: 二叉树数据结构的实现
 |
-| AUTHOR: LBWP
+| AUTHOR: LBW
 |
 | EMAIL: 2582482991qq.com
 |
