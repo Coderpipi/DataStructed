@@ -1,4 +1,4 @@
-#include "SqQueue.h"
+#include "sqqueue.h"
 
 #include <iostream>
 void InitQueue(SqQueue *&q) {

@@ -1,4 +1,4 @@
-#include "SqTable.h"
+#include "sqtable.h"
 
 #include <algorithm>
 #include <cstdio>

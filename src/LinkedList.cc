@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
-#include "LinkedList.h"
+#include "linkedlist.h"
 
 void CreateListF(LinkNode *&L, ElemType a[], int n)
 {

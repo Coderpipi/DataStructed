@@ -17,7 +17,7 @@
 */
 #include <cstdio>
 #include <cstdlib>
-#include "LinkedQueue.h"
+#include "linkedqueue.h"
 
 void InitQueue(LinkQuNode *&q)
 {

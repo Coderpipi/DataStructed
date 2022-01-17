@@ -1,5 +1,5 @@
 #include <cstdlib>
-#include "RdQueue.h"
+#include "rdqueue.h"
 void InitQueue(RdQueue *&q)
 {
     q = (RdQueue *)malloc(sizeof(RdQueue));

@@ -23,7 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "SqQueue.h"
+#include "sqqueue.h"
 int visit[MAXV]{0};  // 访问元素标记, 0代表未被访问, 1代表已被访问过
 
 void CreateGraph(AdjGraph *&G, int A[MAXV][MAXV], int n, int e) {

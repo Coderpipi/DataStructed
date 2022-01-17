@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
-#include <SqStack.h>
+#include <sqstack.h>
 void InitStack(SqStack *&s)
 {
     s = (SqStack *)malloc(sizeof(SqStack));

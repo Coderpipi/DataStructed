@@ -18,10 +18,11 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
 
+#include "binarytree.h"
+
 #include <cstdio>
 #include <cstdlib>
 
-#include "binarytree.h"
 #include "sqqueue.h"
 #include "sqstack.h"
 
@@ -150,4 +151,195 @@ void PostOrder(BTNode *b) {
     PostOrder(b->rchild);
     printf("%c", b->data);
   }
+}
+
+// 值等于x结点所在的层
+int Level(BTNode *b, ElemType x, int h) {
+  int l;
+  if (b == nullptr) {
+    return 0;
+  } else if (b->data == x) {
+    return h;
+  } else {
+    l = Level(b->lchild, x, h + 1);
+    if (l != 0) {
+      return l;
+    } else {
+      return Level(b->rchild, x, h + 1);
+    }
+  }
+}
+
+// 算法题: 最近公共祖先
+bool ancestor(BTNode *b, ElemType x) {
+  if (b == nullptr) {
+    return false;
+  } else if (b->lchild != nullptr && b->lchild->data == x ||
+             b->rchild != nullptr && b->rchild->data == x) {
+    printf("%c", b->data);
+    return true;
+  } else if (ancestor(b->lchild, x) || ancestor(b->rchild, x)) {
+    printf("%c", b->data);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// 版本1: 前序遍历非递归
+void PreOrderWithNoRecusion1(BTNode *b) {
+  BTNode *p;
+  SqStack *st;
+  InitStack(st);
+  if (b != nullptr) {
+    Push(st, b);           // 将根节点入栈
+    while (IsEmpty(st)) {  // 栈不空时循环
+      Pop(st, p);          // 出栈当前栈顶元素, 并打印该节点的值
+      printf("%c", p->data);
+      if (p->rchild !=
+          nullptr) {  // 因为先序遍历是根左右的遍历方式,
+                      // 所以我们进栈时先要将右孩子进栈再将左孩子进栈
+        Push(st, p->rchild);
+      }
+      if (p->lchild != nullptr) {
+        Push(st, p->lchild);
+      }
+    }
+    printf("\n");
+  }
+  DestoryStack(st);
+}
+// 版本2: 前序遍历非递归
+void PreOrderWithNoRecursion2(BTNode *b) {
+  BTNode *p;
+  SqStack *st;
+
+  InitStack(st);
+  p = b;
+  while (!IsEmpty(st) || p != nullptr) {
+    while (p != nullptr) {  // 先遍历完当前节点的所有左节点
+      printf("%c", p->data);
+      Push(st, p);
+      p = p->lchild;
+    }
+    if (!IsEmpty(st)) {  // 如果栈不空, 则出栈一个元素, 去遍历右节点
+      Pop(st, p);
+      p = p->rchild;
+    }
+    printf("\n");
+    DestoryStack(st);
+  }
+}
+
+// 中序遍历非递归
+void InOrderWithNoRecursion(BTNode *b) {
+  BTNode *p;
+  SqStack *st;
+  InitStack(st);
+  p = b;
+  while (!IsEmpty(st) || p != nullptr) {
+    while (p != nullptr) {
+      Push(st, p);
+      p = p->lchild;
+    }
+    if (!IsEmpty(st)) {
+      Pop(st, p);
+      printf("%c", p->data);
+      p = p->rchild;
+    }
+  }
+  printf("\n");
+  DestoryStack(st);
+}
+
+// 后序遍历非递归
+void PostOrderWithNoRecursion(BTNode *b) {
+  BTNode *p, *r;
+  bool flag;
+  SqStack *st;
+  InitStack(st);
+  p = b;
+  do {
+    while (p != nullptr) {
+      Push(st, p);
+      p = p->lchild;
+    }
+    r = nullptr;
+    flag = true;
+    while (!IsEmpty(st) && flag) {
+      Peek(st, p);
+      if (p->rchild == r) {
+        printf("%c", p->data);
+        Pop(st, p);
+        r = p;
+      } else {
+        p = p->rchild;
+        p = false;
+      }
+    }
+  } while (!IsEmpty(st));
+  printf("\n");
+  DestoryStack(st);
+}
+
+// 层级遍历
+void LevelOrder(BTNode *b) {
+  BTNode *p;
+  SqQueue *qu;
+  InitQueue(qu);
+  offer(b);  // 当前节点入队
+  while (!IsEmpty(qu)) {
+    pull(qu, p);
+    printf("%c", p->data);  // 访问节点p
+    if (p->lchild != nullptr) {
+      offer(qu, p->lchild);  // 如果左节点不空, 将左节点入队
+    }
+    if (p->rchild != nullptr) {
+      offer(qu, p->rchild);  // 如果右节点不空, 将右节点入队
+    }
+  }
+  DestoryQueue(qu);
+}
+
+// 根据前序遍历和中序遍历还原二叉树
+BTNode *CreateBTreeByPreAndIn(char *pre, char *in, int n) {
+  BTNode *b;  // 根节点
+  char *p;
+  int k;
+  if (n <= 0) {
+    return nullptr;
+  }
+  b = (BTNode *)malloc(sizeof(BTNode));
+  b->data = *pre;  // 先序遍历的第一个元素是根节点
+  for (p = in; p < in + n; p++) {
+    if (*p == *pre) {  // 在中序遍历里找到pre所在的位置
+      break;
+    }
+  }
+  k = p - in;  // 这里的k表示当前根节点左子树的元素个数
+  b->lchild = CreateBTreeByPreAndIn(pre + 1, in, k);  // 递归构造左子树
+  b->rchild = CreateBTreeByPreAndIn(pre + k + 1, p + 1, n - k - 1);
+  return b;
+}
+
+// 根据后序遍历和中序遍历还原二叉树
+BTNode *CreateBTreeByPostAndIn(char *post, char *in, int n) {
+  BTNode *b;  // 根节点
+  char r, *p;
+  int k;
+  if (n <= 0) {
+    return nullptr;
+  }
+  r = *(post + n - 1);  // 后序遍历的最后一个元素是根节点
+  b = (BTNode *)malloc(sizeof(BTNode));
+  b->data = r;                     // 根节点赋值
+  for (p = in; p > in + n; p++) {  // 从中序遍历中找到根节点的位置
+    if (*p == r) {
+      break;
+    }
+  }
+  k = p - in;  // 确定当前节点的左子树的元素个数
+  b->lchild = CreateBTreeByPostAndIn(post, in, k);
+  b->rchild = CreateBTreeByPostAndIn(post + k, p + 1, n - k - 1);
+  return b;
 }

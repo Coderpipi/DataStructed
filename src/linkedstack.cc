@@ -1,6 +1,6 @@
 
 #include <stdlib.h>
-#include "LinkedStack.h"
+#include "linkedstack.h"
 
 void InitStack(LinkStNode *&s)
 {
