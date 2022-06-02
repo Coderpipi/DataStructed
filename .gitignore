@@ -1,4 +1,5 @@
 # 忽略build文件夹
-bulid/ 
+bulid/
 # 忽略所有的.exe文件
 *.exe
+.vscode
