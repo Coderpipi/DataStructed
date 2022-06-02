@@ -18,13 +18,13 @@
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
 
-#include "binarytree.h"
+#include "binary_tree.h"
 
 #include <cstdio>
 #include <cstdlib>
 
-#include "sqqueue.h"
-#include "sqstack.h"
+#include "sq_queue.h"
+#include "sq_stack.h"
 
 // 构建一颗二叉树
 void CreateBTree(BTNode *&b, const char *str) {

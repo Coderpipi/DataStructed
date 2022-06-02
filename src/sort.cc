@@ -21,6 +21,8 @@
 
 #include <iostream>
 
+#include "fib.h"
+
 using namespace std;
 
 void InsertSort(RecType R[], int n) {

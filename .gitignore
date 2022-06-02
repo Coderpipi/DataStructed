@@ -1,5 +1,7 @@
 # 忽略build文件夹
-bulid/
+build/
+bin/
 # 忽略所有的.exe文件
 *.exe
 .vscode
+*.code-workspace

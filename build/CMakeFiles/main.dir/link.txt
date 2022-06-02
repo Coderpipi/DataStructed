@@ -1,1 +1,0 @@
-clang++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -mmacosx-version-min=11.2 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/main.dir/src/main.cc.o CMakeFiles/main.dir/src/sort.cc.o -o ../bin/main   -L/Users/shoplazza/CPPProject/DataStructed/lib 

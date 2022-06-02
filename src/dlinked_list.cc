@@ -1,8 +1,7 @@
-#include "dlinkedlist.h"
+#include "dlinked_list.h"
 
 #include <cstdio>
 #include <cstdlib>
-
 void CreateListF(DLinkNode *&L, ElemType a[], int n) {
   DLinkNode *s;
   L = (DLinkNode *)malloc(sizeof(DLinkNode));
