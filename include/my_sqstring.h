@@ -2,9 +2,10 @@
 #define _MYSQSTRING_H
 #define MAX_SIZE 50
 typedef struct {
-  char data[MAX_SIZE];
-  int length;
+    char data[MAX_SIZE];
+    int length;
 } SqString;
+
 // 1.生成串
 void StrAssign(SqString &, char[]);
 
@@ -55,4 +56,5 @@ void GetNextVal(SqString, int[]);
 
 // 改进的KMP算法
 int BetterKMP(SqString, SqString);
+
 #endif

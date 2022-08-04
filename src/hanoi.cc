@@ -19,14 +19,11 @@
 */
 #include <cstdio>
 #include "hanoi.h"
-void Hanoi(int n, char X, char Y, char Z)
-{
-    if (n == 1)
-    {
+
+void Hanoi(int n, char X, char Y, char Z) {
+    if (n == 1) {
         printf("\t将第%d个盘片从%c移动到%c\n", n, X, Z);
-    }
-    else
-    {
+    } else {
         Hanoi(n - 1, X, Z, Y);
         printf("\t将第%d个盘片从%c移动到%c\n", n, X, Z);
         Hanoi(n - 1, Y, X, Z);

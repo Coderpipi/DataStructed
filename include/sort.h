@@ -3,8 +3,8 @@
 typedef int KeyType;
 typedef char InfoType;
 typedef struct {
-  KeyType key;
-  InfoType data;
+    KeyType key;
+    InfoType data;
 } RecType;
 
 // 1.直接插入排序
@@ -36,4 +36,5 @@ void HeapSort(RecType[], int);
 
 // 9.归并排序
 void MergeSort(RecType[], int, int, int);
+
 #endif

@@ -1,16 +1,15 @@
 #include <cstdlib>
-#include "rdqueue.h"
-void InitQueue(RdQueue *&q)
-{
-    q = (RdQueue *)malloc(sizeof(RdQueue));
+#include "rd_queue.h"
+
+void InitQueue(RdQueue *&q) {
+    q = (RdQueue *) malloc(sizeof(RdQueue));
     q->front = 0;
     q->count = 0;
 }
-bool offer(RdQueue *&q, ElemType e)
-{
+
+bool offer(RdQueue *&q, ElemType e) {
     int rear;
-    if (q->count == MAX)
-    {
+    if (q->count == MAX) {
         return false;
     }
     rear = (q->front + q->count) % MAX;
@@ -20,10 +19,9 @@ bool offer(RdQueue *&q, ElemType e)
     q->count++;
     return true;
 }
-bool pull(RdQueue *&q, ElemType &e)
-{
-    if (q->count == 0)
-    {
+
+bool pull(RdQueue *&q, ElemType &e) {
+    if (q->count == 0) {
         return false;
     }
     q->front = (q->front + 1) % MAX;
@@ -32,7 +30,7 @@ bool pull(RdQueue *&q, ElemType &e)
     q->count--;
     return true;
 }
-bool IsEmpty(RdQueue *q)
-{
+
+bool IsEmpty(RdQueue *q) {
     return q->count == 0;
 }

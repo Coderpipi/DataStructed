@@ -4,8 +4,7 @@
 
 typedef char ElemType;
 
-typedef struct
-{
+typedef struct {
     ElemType data[MAX];
     int front;
     int count;
@@ -13,10 +12,14 @@ typedef struct
 
 // 1.初始化环形队列
 void InitQueue(RdQueue *&);
+
 // 2.进队
 bool offer(RdQueue *&, ElemType);
+
 // 3.出队
 bool pull(RdQueue *&, ElemType &);
+
 // 4.判断队列是否空
 bool IsEmpty(RdQueue *);
+
 #endif

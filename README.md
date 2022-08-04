@@ -5,18 +5,18 @@
 
 ## 包括了链表,双向链表,栈,队列,环形队列,二叉树,图的数据结构的实现
 
-- [顺序表](./src/sq_able.cc)
+- [顺序表](./src/sq_table.cc)
 - [链表](./src/linked_list.cc)
 - [双向链表](./src/dlinked_list.cc)
 - [顺序栈](./src/sq_stack.cc)
 - [顺序队列](./src/sq_queue.cc)
-- [链栈](./src/list_stack.cc)
+- [链栈](./src/linked_stack.cc)
 - [链队列](./src/linked_queue.cc)
 - [环形队列](./src/rd_queue.cc)
 - [二叉树](./src/binary_tree.cc)
 - [哈夫曼树](./src/haffman.cc)
 - [图](./src/graph.cc)
-- [并查集](./src/ufstree.h)
+- [并查集](./src/ufstree.cc)
 
 ## 同时也包括了各种排序算法,树,图的遍历,常见的递归问题(斐波那契数列, 汉诺塔求解)
 

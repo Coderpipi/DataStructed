@@ -1,12 +1,13 @@
 #ifndef _MYLINKSTRING_H
 #define _MYLINKSTRING_H
 typedef struct snode {
-  char data;
-  snode *next;
+    char data;
+    snode *next;
 } LinkStrNode;
 
 // 1.生成串
 void StrAssign(LinkStrNode *&, char[]);
+
 // 2.销毁串
 void DestoryStr(LinkStrNode *&);
 
